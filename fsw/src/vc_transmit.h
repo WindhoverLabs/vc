@@ -28,16 +28,8 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/**
- * @defgroup Transmit
- * @addtogroup Transmit
- * @file vc_transmit_udp.h
- * @brief Custom UDP layer for Video Controller.
- * @{
- */
- 
-#ifndef VC_TRANSMIT_UDP_H
-#define VC_TRANSMIT_UDP_H
+#ifndef VC_TRANSMIT_H
+#define VC_TRANSMIT_H
 
 /**
  * Transmit struct handle for user defined source and/or destination
@@ -47,38 +39,33 @@ typedef struct
 {
     uint16      DestPort;
     uint16      MyPort;
-    char[15]    DestIP;
-    char[15]    MyIP;
-    int         socketfd;
+    char        DestIP[15];
+    char        MyIP[15];
+    int         SocketFd;
 } VC_Transmit_Handle_t;
 
 
 /**
  * @brief Initialize a configured resource.
- * @param handle the handle to use.
  * @return true if successful, otherwise false
  */
-boolean VC_Transmit_Init(VC_Transmit_Handle_t *handle);
+boolean VC_Transmit_Init(void);
 
 
 /**
  * @brief Uninitialize a previously initialized resource.
- * @param handle the handle to use.
  * @return true if successful, otherwise false
  */
-boolean VC_Transmit_Uninit(VC_Transmit_Handle_t *handle);
+boolean VC_Transmit_Uninit(void);
 
 
 /**
  * @brief Transmit data using a previously initialized handle.
- * @param handle the handle to use.
  * @param buf points to a buffer containing the data to be sent.
  * @param len specifies the size of the data in bytes.
  * @return On success, returns the number of bytes sent. On error, -1 is
  * returned.
  */
-int VC_SendData(VC_Transmit_Handle_t handle, const void *buf, size_t len);
+int VC_SendData(const void *buf, size_t len);
 
 #endif
-
-/* @} */
