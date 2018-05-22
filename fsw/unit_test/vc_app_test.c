@@ -451,35 +451,12 @@ void Test_VC_RcvMsg_Fail_BadArg(void)
  **************************************************************************/
 /**
  * Test VC_CleanupCallback()
- * NOTE: empty function, so nothing to assert
+ * NOTE: no way to fail cleanup callback.
  */
 void Test_VC_CleanupCallback(void)
 {
-    /* Fail VC_Transmit_Uninit and assert that an event was raised */
-    VC_Transmit_Test_Returns.VC_Transmit_Uninit_Return = FALSE;
-    
-    /* Fail VC_Devices_Stop and assert that an event was raised */
-    VC_Device_Test_Returns.VC_Devices_Stop_Return = FALSE;
-    
-    /* Fail VC_Devices_Uninit and assert that an event was raised */
-    VC_Device_Test_Returns.VC_Devices_Uninit_Return = FALSE;
-    
     /* Execute the function being tested */
     VC_CleanupCallback();
-    
-    /* Set stub return back to original state */
-    /* TODO reset this during teardown */
-    VC_Transmit_Test_Returns.VC_Transmit_Uninit_Return = TRUE;
-    VC_Device_Test_Returns.VC_Devices_Stop_Return = TRUE;
-    VC_Device_Test_Returns.VC_Devices_Uninit_Return = TRUE;
-    
-    UtAssert_True(Ut_CFE_EVS_GetEventQueueDepth()==3,"Event Count = 3");
-    UtAssert_EventSent(VC_UNINIT_ERR_EID, CFE_EVS_ERROR, "VC_Transmit_Uninit failed", 
-                        "VC_Transmit_Uninit failed to raise an event");
-    UtAssert_EventSent(VC_UNINIT_ERR_EID, CFE_EVS_ERROR, "VC_Devices_Stop failed", 
-                        "VC_Transmit_Uninit failed to raise an event");
-    UtAssert_EventSent(VC_UNINIT_ERR_EID, CFE_EVS_ERROR, "VC_Devices_Uninit failed", 
-                        "VC_Transmit_Uninit failed to raise an event");
 }
 
 
