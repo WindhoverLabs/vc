@@ -11,7 +11,7 @@ module.exports = class CfeCdrPlugin extends CdrPlugin {
 
   getContent() {
     var result = {
-      shortDescription: 'VC',
+      shortDescription: 'Video Control',
       longDescription: 'Video Control Manager.',
       nodes: {
         main: {
