@@ -41,6 +41,7 @@ add_airliner_app_def(vc
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/vc_dev_io.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/vc_events.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/vc_msg.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/../src/vc_symbols.c
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/vc_transmit.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/vc_custom.h
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/vc_version.h
