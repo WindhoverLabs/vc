@@ -1,6 +1,7 @@
 'use strict';
 
 var path = require( 'path' );
+var VideoServer = require('./video_server');
 
 const CdrPlugin = require( path.join( global.CDR_INSTALL_DIR, '/commander/classes/CdrPlugin' ) ).CdrPlugin;
 
@@ -30,6 +31,12 @@ module.exports = class CfeCdrPlugin extends CdrPlugin {
     };
 
     return result;
+  }
+  
+  getServerApp(commander) {
+	var videoServer = new VideoServer(commander);
+	
+	return {name:'video-server', obj:videoServer};
   }
 };
 
