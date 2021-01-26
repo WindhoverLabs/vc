@@ -31,7 +31,7 @@
 #
 #############################################################################
 
-add_airliner_app_def(vc
+buildliner_add_app_def(vc
     FILE VC
     SOURCES
         ${CMAKE_CURRENT_SOURCE_DIR}/../src/vc_app.c
@@ -56,7 +56,7 @@ add_airliner_app_def(vc
         ${PROJECT_SOURCE_DIR}/apps/vc/fsw/platform_inc
 )
 
-add_airliner_app_unit_test(vc-ut
+buildliner_add_app_unit_test(vc-ut
     UTASSERT
     NO_HELGRIND
     NO_MASSIF
